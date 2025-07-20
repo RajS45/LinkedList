@@ -1,0 +1,46 @@
+Deletion Operation in LinkedList
+
+1.At First Position.
+class Solution {
+    public ListNode deleteHead(ListNode head) {
+        if (head == null) 
+            return null;
+        ListNode temp = head;
+        head = head.next;
+        temp = null;
+        return head;
+    }
+}
+2.At End Position
+class Solution {
+    public ListNode deleteHead(ListNode head) {
+        if (head == null) 
+            return null;
+        ListNode temp = head;
+        head = head.next;
+        temp = null;
+        return head;
+    }
+}
+3.At Kth Position.
+class Solution {
+    public ListNode deleteKthNode(ListNode head, int k) {
+        if (head == null)
+            return null;
+        if (k == 1) {
+            ListNode temp = head;
+            head = head.next;
+            return head;
+        }
+        ListNode temp = head;
+        for (int i = 0; temp != null && i < k - 2; i++) {
+            temp = temp.next;
+        }
+        if (temp == null || temp.next == null)
+            return head;
+        ListNode next = temp.next.next;
+        temp.next = next;
+
+        return head;
+    }
+}
