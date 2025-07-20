@@ -1,0 +1,47 @@
+For At Fisrt Position insertion
+class Solution {
+    public ListNode insertAtHead(ListNode head, int X) {
+        ListNode newnode = new ListNode(X);
+            newnode.next = head;
+        head = newnode;
+        return head;
+    }
+}
+
+For At last position.
+
+class Solution {
+    public ListNode insertAtTail(ListNode head, int X) {
+        if (head == null)
+            return new ListNode(X);
+        ListNode temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        ListNode newNode = new ListNode(X);
+        temp.next = newNode;
+        return head;
+    }
+}
+
+For kth position insertion
+class Solution{
+
+    public Node insertAtKthIndex(Node head,int x,int k){
+        Node newNode = new Node(x);
+        if (k == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+        Node current = head;
+        for (int i = 0; i < k - 1 && current != null; i++) {
+            current = current.next;
+        }
+        if (current == null) {
+            return head; // k is out of bounds
+        }
+        newNode.next = current.next;
+        current.next = newNode;
+        return head;
+    }
+}
