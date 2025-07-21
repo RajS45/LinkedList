@@ -1,0 +1,77 @@
+
+import java.util.*;
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {
+        val = 0;
+        next = null;
+    }
+    ListNode(int data1) {
+        val = data1;
+        next = null;
+    }
+    ListNode(int data1, ListNode next1) {
+        val = data1;
+        next = next1;
+    }
+}        
+class Solution {
+    public ListNode sortList(ListNode head) {
+        int c0 = 0, c1 = 0, c2 = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            if (temp.val == 0)
+                c0++;
+            else if (temp.val == 1)
+                c1++;
+            else if (temp.val == 2)
+                c2++;
+            temp = temp.next;
+        }
+
+        temp = head;
+        while (temp != null) {
+            if (c0 > 0) {
+                temp.val = 0;
+                c0--;
+            } else if (c1 > 0) {
+                temp.val = 1;
+                c1--;
+            } else if (c2 > 0) {
+                temp.val = 2;
+                c2--;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
+}
+public class Main {
+    public static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+    public static ListNode newNode(int data) {
+        ListNode node = new ListNode(data);
+        return node;
+    }
+    public static void main(String[] args) {
+        ListNode head = newNode(1);
+        head.next = newNode(2);
+        head.next.next = newNode(0);
+        head.next.next.next = newNode(1);
+        head.next.next.next.next = newNode(2);
+        head.next.next.next.next.next = newNode(0);
+        head.next.next.next.next.next.next = newNode(1);
+        System.out.print("Original list: ");
+        printList(head);
+        Solution sol = new Solution();
+        head = sol.sortList(head);
+        System.out.print("Sorted list: ");
+        printList(head);
+    }
+}
