@@ -1,2 +1,2 @@
 # LinkedList
-Insertion &amp; Deletion operation.
+Insertion operation & Deletion operation.
